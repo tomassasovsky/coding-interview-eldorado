@@ -1,4 +1,4 @@
-import { Request, ResponseToolkit } from '@hapi/hapi';
+import { Request, ResponseObject, ResponseToolkit } from '@hapi/hapi';
 import Boom from '@hapi/boom';
 import { Item } from '../entities/item.entity';
 import { OkResponse } from '../entities/response.schema';
@@ -6,7 +6,8 @@ import { appDataSource } from '../config/database';
 
 const itemRepository = appDataSource.getRepository(Item);
 
-export const getAllItems = async (_request: Request, h: ResponseToolkit) => {
+export const getAllItems = async (_request: Request, h: ResponseToolkit):
+  Promise<ResponseObject | Boom.Boom<unknown>> => {
   try {
     const items = await itemRepository.find();
     return h.response(items).code(200);
@@ -16,7 +17,8 @@ export const getAllItems = async (_request: Request, h: ResponseToolkit) => {
   }
 };
 
-export const getItem = async (request: Request, h: ResponseToolkit) => {
+export const getItem = async (request: Request, h: ResponseToolkit):
+  Promise<ResponseObject | Boom.Boom<unknown>> => {
   try {
     const { id } = request.params;
     const idNumber = parseInt(id, 10);
@@ -33,7 +35,8 @@ export const getItem = async (request: Request, h: ResponseToolkit) => {
   }
 };
 
-export const createItem = async (request: Request, h: ResponseToolkit) => {
+export const createItem = async (request: Request, h: ResponseToolkit):
+  Promise<ResponseObject | Boom.Boom<unknown>> => {
   try {
     const itemData = request.payload as Partial<Item>;
     const newItem = itemRepository.create(itemData);
@@ -45,7 +48,8 @@ export const createItem = async (request: Request, h: ResponseToolkit) => {
   }
 };
 
-export const updateItem = async (request: Request, h: ResponseToolkit) => {
+export const updateItem = async (request: Request, h: ResponseToolkit):
+  Promise<ResponseObject | Boom.Boom<unknown>> => {
   try {
     const { id } = request.params;
     const idNumber = parseInt(id, 10);
@@ -65,7 +69,8 @@ export const updateItem = async (request: Request, h: ResponseToolkit) => {
   }
 };
 
-export const deleteItem = async (request: Request, h: ResponseToolkit) => {
+export const deleteItem = async (request: Request, h: ResponseToolkit):
+  Promise<ResponseObject | Boom.Boom<unknown>> => {
   try {
     const { id } = request.params;
     const idNumber = parseInt(id, 10);

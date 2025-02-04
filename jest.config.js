@@ -7,5 +7,8 @@ module.exports = {
             tsconfig: 'tsconfig.json',
         }],
     },
-    testMatch: ['**/e2e/**/*.test.ts'],
+    testMatch: [
+        '**/e2e/**/*.test.ts',
+        '**/tests/**/*.test.ts',
+    ],
 };
