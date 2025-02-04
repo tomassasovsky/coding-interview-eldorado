@@ -10,11 +10,6 @@ const getServer = async () => {
         await appDataSource.initialize();
     }
 
-    // Clear the database before running tests
-    if (process.env.NODE_ENV === 'test') {
-        await appDataSource.getRepository('Item').clear();
-    }
-
     const server = Hapi.server({
         host: process.env.NODE_HOST || 'localhost',
         port: process.env.NODE_PORT || 3000,

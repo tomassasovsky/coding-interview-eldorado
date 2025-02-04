@@ -1,29 +1,51 @@
 import { DataSource } from 'typeorm';
 import { appDataSource, destroyDataSource } from '../../src/config/database';
 import { Item } from '../../src/entities/item.entity';
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions.js';
 
 describe('appDataSource configuration', () => {
   it('should be an instance of DataSource', () => {
     expect(appDataSource).toBeInstanceOf(DataSource);
   });
 
-  it('should have correct configuration values', () => {
-    const expectedPort = parseInt(process.env.DB_PORT || '5432');
+  it('should have the correct configuration values based on NODE_ENV', () => {
+    const isTest = process.env.NODE_ENV === 'test';
 
-    expect(appDataSource.options.type).toBe('postgres');
-    const options = appDataSource.options as PostgresConnectionOptions;
+    if (isTest) {
+      // In test mode, the SQLite in-memory data source is used.
+      expect(appDataSource.options.type).toBe('sqlite');
+      // For SQLite configuration, the database should be ':memory:'.
+      expect(appDataSource.options.database).toBe(':memory:');
 
-    expect(options.port).toBe(expectedPort);
-    expect(options.host).toBe(process.env.DB_HOST);
-    expect(options.username).toBe(process.env.DB_USER);
-    expect(options.password).toBe(process.env.DB_PASSWORD);
-    expect(options.database).toBe(process.env.DB_NAME);
+      // The entities, synchronize, and logging options should still match.
+      expect(appDataSource.options.entities).toContain(Item);
+      expect(appDataSource.options.synchronize).toBe(true);
+      expect(appDataSource.options.logging).toBe(false);
+    } else {
+      // In non-test mode, the PostgreSQL data source is used.
+      expect(appDataSource.options.type).toBe('postgres');
 
-    expect(appDataSource.options.entities).toContain(Item);
+      const expectedPort = parseInt(process.env.DB_PORT || '5432', 10);
+      // Cast options as PostgresConnectionOptions for type safety.
+      const options = appDataSource.options as {
+        port: number;
+        host: string | undefined;
+        username: string | undefined;
+        password: string | undefined;
+        database: string | undefined;
+        entities: any;
+        synchronize: boolean;
+        logging: boolean;
+      };
 
-    expect(appDataSource.options.synchronize).toBe(true);
-    expect(appDataSource.options.logging).toBe(false);
+      expect(options.port).toBe(expectedPort);
+      expect(options.host).toBe(process.env.DB_HOST);
+      expect(options.username).toBe(process.env.DB_USER);
+      expect(options.password).toBe(process.env.DB_PASSWORD);
+      expect(options.database).toBe(process.env.DB_NAME);
+      expect(options.entities).toContain(Item);
+      expect(options.synchronize).toBe(true);
+      expect(options.logging).toBe(false);
+    }
   });
 });
 
@@ -31,14 +53,13 @@ describe('destroyDataSource', () => {
   let originalIsInitializedDescriptor: PropertyDescriptor | undefined;
 
   beforeEach(() => {
-    // Backup the original property descriptor for isInitialized.
+    // Back up the original property descriptor for isInitialized.
     originalIsInitializedDescriptor = Object.getOwnPropertyDescriptor(appDataSource, 'isInitialized');
   });
 
   afterEach(() => {
-    // Restore any mocked functions.
+    // Restore all mocks.
     jest.restoreAllMocks();
-
     // Restore the original isInitialized property.
     if (originalIsInitializedDescriptor) {
       Object.defineProperty(appDataSource, 'isInitialized', originalIsInitializedDescriptor);
