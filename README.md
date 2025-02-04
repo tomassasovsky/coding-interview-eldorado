@@ -3,6 +3,8 @@
 This project is a code challenge for El Dorado. It implements a REST API to perform CRUD operations on an [Item](/src/entities/item.entity.ts#L5) entity. The entity has three fields: [id](/src/entities/item.entity.ts#L7),
 [name](/src/entities/item.entity.ts#L10), and [price](/src/entities/item.entity.ts#L22).
 
+> A Spanish version of this README is available [here](README.es.md).
+
 ## Table of Contents
 
 - [Overview](#overview)
@@ -104,7 +106,7 @@ The API uses [PostgreSQL](https://www.postgresql.org/) for persistence. Settings
 
 ## Swagger Documentation
 
-API documentation is automatically generated using Swagger. You can view the docs by visiting the appropriate URL on your running server. Setup for Swagger is in swagger.ts.
+API documentation is automatically generated using Swagger. You can view the docs by visiting the appropriate URL on your running server, at `/documentation`. Setup for Swagger is in swagger.ts.
 
 ## Testing
 

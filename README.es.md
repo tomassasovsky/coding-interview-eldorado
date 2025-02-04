@@ -2,6 +2,8 @@
 
 Este proyecto es un desafío de código para El Dorado. Implementa una API REST para realizar operaciones CRUD sobre una entidad [Item](/src/entities/item.entity.ts#L5). La entidad tiene tres campos: [id](/src/entities/item.entity.ts#L7), [name](/src/entities/item.entity.ts#L10) y [price](/src/entities/item.entity.ts#L22).
 
+> Existe una versión en inglés de este documento. Puedes encontrarla [aquí](README.md).
+
 ## Tabla de Contenidos
 
 - [Resumen](#resumen)
@@ -103,7 +105,7 @@ La API utiliza [PostgreSQL](https://www.postgresql.org/) para persistencia. La c
 
 ## Documentación con Swagger
 
-La documentación de la API se genera automáticamente con Swagger. Puedes ver la documentación visitando la URL correspondiente en tu servidor en ejecución. La configuración de Swagger está en **swagger.ts**.
+La documentación de la API se genera automáticamente con Swagger. Puedes ver la documentación visitando la URL correspondiente en tu servidor en ejecución, en el path `/documentation`. La configuración de Swagger está en **swagger.ts**.
 
 ## Pruebas
 
