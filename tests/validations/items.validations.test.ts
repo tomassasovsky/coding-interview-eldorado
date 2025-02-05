@@ -3,7 +3,7 @@ import {
   itemIdSchema,
   createItemSchema,
   updateItemSchema,
-} from '../../src/validations/items.validations';
+} from '@/validations/items.validations';
 
 interface WithLabel {
   label: string;

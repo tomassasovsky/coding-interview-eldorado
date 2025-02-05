@@ -1,7 +1,7 @@
 import {
   okResponseSchema,
   errorResponseSchema,
-} from '../../src/entities/response.schema';
+} from '@/entities/response.schema';
 
 interface WithLabel {
   label: string;

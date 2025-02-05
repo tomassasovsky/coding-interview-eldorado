@@ -1,7 +1,7 @@
 import { Server } from '@hapi/hapi';
-import { defineRoutes } from '../../src/routes/routes';
-import { itemRoutes } from '../../src/routes/items.routes';
-import { pingRoute } from '../../src/routes/ping.route';
+import { defineRoutes } from '@/routes/routes';
+import { itemRoutes } from '@/routes/items.routes';
+import { pingRoute } from '@/routes/ping.route';
 
 describe('defineRoutes', () => {
   it('should register pingRoute and itemRoutes on the server', () => {

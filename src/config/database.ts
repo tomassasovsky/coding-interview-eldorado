@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Item } from '../entities/item.entity';
+import { Item } from '@/entities/item.entity';
 
 import dotenv from 'dotenv';
 

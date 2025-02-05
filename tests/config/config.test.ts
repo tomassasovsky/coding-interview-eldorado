@@ -21,7 +21,7 @@ describe('Config Validation', () => {
 
     expect(() => {
       // typescript will check the types of the required environment variables
-      require('../../src/config/config');
+      require('@/config/config');
     }).not.toThrow();
   });
 
@@ -35,7 +35,7 @@ describe('Config Validation', () => {
     process.env.DB_PASSWORD = 'postgres';
 
     expect(() => {
-      require('../../src/config/config');
+      require('@/config/config');
     }).toThrow(/DB_NAME/);
   });
 
@@ -49,7 +49,7 @@ describe('Config Validation', () => {
     process.env.DB_PASSWORD = 'postgres';
 
     expect(() => {
-      require('../../src/config/config');
+      require('@/config/config');
     }).toThrow(/NODE_PORT/);
   });
 });

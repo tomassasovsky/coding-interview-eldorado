@@ -11,9 +11,17 @@
     "resolveJsonModule": true,
     "outDir": "./dist",
     "sourceMap": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*",
-    "tests"
-  ]
+    "tests",
+    "e2e/**/*"
+  ],
 }

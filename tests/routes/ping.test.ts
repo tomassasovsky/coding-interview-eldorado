@@ -1,5 +1,5 @@
-import { pingRoute } from '../../src/routes/ping.route';
-import { okResponseSchema } from '../../src/entities/response.schema';
+import { pingRoute } from '@/routes/ping.route';
+import { okResponseSchema } from '@/entities/response.schema';
 import { ReqRefDefaults, RouteOptions } from '@hapi/hapi';
 
 describe('pingRoute', () => {

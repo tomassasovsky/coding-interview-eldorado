@@ -1,4 +1,4 @@
-import { validationFailAction } from '../../src/validations/validations';
+import { validationFailAction } from '@/validations/validations';
 
 describe('validationFailAction', () => {
   let h: any;

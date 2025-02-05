@@ -1,8 +1,8 @@
 import { Request, ResponseObject, ResponseToolkit } from '@hapi/hapi';
 import Boom from '@hapi/boom';
-import { Item } from '../entities/item.entity';
-import { OkResponse } from '../entities/response.schema';
-import { appDataSource } from '../config/database';
+import { Item } from '@/entities/item.entity';
+import { OkResponse } from '@/entities/response.schema';
+import { appDataSource } from '@/config/database';
 
 const itemRepository = appDataSource.getRepository(Item);
 

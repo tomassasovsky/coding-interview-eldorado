@@ -1,5 +1,5 @@
 import { ServerRoute } from '@hapi/hapi';
-import { OkResponse, okResponseSchema } from '../entities/response.schema';
+import { OkResponse, okResponseSchema } from '@/entities/response.schema';
 
 export const pingRoute: ServerRoute =
 {

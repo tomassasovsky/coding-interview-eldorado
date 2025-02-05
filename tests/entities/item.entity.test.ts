@@ -1,4 +1,4 @@
-import { itemSchema, itemListSchema, Item } from '../../src/entities/item.entity';
+import { itemSchema, itemListSchema, Item } from '@/entities/item.entity';
 
 interface WithLabel {
   label: string;

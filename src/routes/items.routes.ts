@@ -1,9 +1,9 @@
 import { ServerRoute } from '@hapi/hapi';
-import * as controller from '../controllers/items.controller';
-import * as validations from '../validations/items.validations';
-import { validationFailAction } from '../validations/validations';
-import { itemListSchema, itemSchema } from '../entities/item.entity';
-import { okResponseSchema } from '../entities/response.schema';
+import * as controller from '@/controllers/items.controller';
+import * as validations from '@/validations/items.validations';
+import { validationFailAction } from '@/validations/validations';
+import { itemListSchema, itemSchema } from '@/entities/item.entity';
+import { okResponseSchema } from '@/entities/response.schema';
 
 export const itemRoutes: ServerRoute[] = [
   {

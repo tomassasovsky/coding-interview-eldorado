@@ -1,6 +1,6 @@
 import { DataSource } from 'typeorm';
-import { appDataSource, destroyDataSource } from '../../src/config/database';
-import { Item } from '../../src/entities/item.entity';
+import { appDataSource, destroyDataSource } from '@/config/database';
+import { Item } from '@/entities/item.entity';
 
 describe('appDataSource configuration', () => {
   it('should be an instance of DataSource', () => {

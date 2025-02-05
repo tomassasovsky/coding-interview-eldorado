@@ -2,7 +2,7 @@ import * as Hapi from '@hapi/hapi';
 import * as HapiSwagger from 'hapi-swagger';
 import * as Inert from '@hapi/inert';
 import * as Vision from '@hapi/vision';
-import { initializeSwagger } from '../src/swagger';
+import { initializeSwagger } from '@/swagger';
 
 describe('initializeSwagger', () => {
   it('should register Inert, Vision, and HapiSwagger with the correct options', async () => {
