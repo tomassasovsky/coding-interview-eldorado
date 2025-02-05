@@ -1,9 +1,6 @@
 import { DataSource } from 'typeorm';
 import { Item } from '@/entities/item.entity';
-
-import dotenv from 'dotenv';
-
-dotenv.config();
+import '@/config/config';
 
 const isTest = process.env.NODE_ENV === 'test';
 

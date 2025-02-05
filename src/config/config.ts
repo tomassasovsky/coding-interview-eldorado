@@ -1,16 +1,16 @@
-import * as joi from 'joi';
+import Joi from 'joi';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-const configSchema = joi.object({
-  NODE_HOST: joi.string().required(),
-  NODE_PORT: joi.number().required(),
-  DB_NAME: joi.string().required(),
-  DB_HOST: joi.string().required(),
-  DB_PORT: joi.number().required(),
-  DB_USER: joi.string().required(),
-  DB_PASSWORD: joi.string().required()
+const configSchema = Joi.object({
+  NODE_HOST: Joi.string().required(),
+  NODE_PORT: Joi.number().required(),
+  DB_NAME: Joi.string().required(),
+  DB_HOST: Joi.string().required(),
+  DB_PORT: Joi.number().required(),
+  DB_USER: Joi.string().required(),
+  DB_PASSWORD: Joi.string().required()
 }).unknown(true);
 
 const { error } = configSchema.validate(process.env);
