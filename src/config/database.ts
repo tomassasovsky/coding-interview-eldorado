@@ -27,7 +27,10 @@ const testDataSource = new DataSource({
   logging: false,
 });
 
-export const appDataSource = isTest ? testDataSource : persistantDataSource;
+export const appDataSource =
+  isTest
+    ? testDataSource
+    : persistantDataSource;
 
 export const destroyDataSource = async () => {
   if (appDataSource.isInitialized) {
